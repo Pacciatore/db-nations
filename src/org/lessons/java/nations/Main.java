@@ -15,7 +15,7 @@ public class Main {
 		String user = "root";
 		String password = "root";
 
-		// milestone1(url, user, password);
+		milestone2(url, user, password);
 
 		milestone3(url, user, password);
 
