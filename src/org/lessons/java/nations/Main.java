@@ -1,11 +1,13 @@
 package org.lessons.java.nations;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -150,10 +152,10 @@ public class Main {
 						System.out.println("Nazione ricercata: " + countryName.toUpperCase());
 
 						BigDecimal countryGdp = rs.getBigDecimal("country_gdp");
-						System.out.println("\nPIL: " + countryGdp);
+						System.out.println("\nPIL: " + gdpFormatter(countryGdp));
 
 						int countryPopulation = rs.getInt("country_population");
-						System.out.println("Popolazione: " + countryPopulation);
+						System.out.println("Popolazione: " + String.format("%,d", countryPopulation));
 					}
 
 					System.out.println("\nLingue parlate: ");
@@ -174,6 +176,15 @@ public class Main {
 		}
 
 		s.close();
+
+	}
+
+	public static String gdpFormatter(BigDecimal gdp) {
+
+		DecimalFormat df = new DecimalFormat("#,###.00€");
+		df.setRoundingMode(RoundingMode.HALF_EVEN);
+
+		return df.format(gdp);
 
 	}
 
