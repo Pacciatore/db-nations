@@ -14,6 +14,12 @@ public class Main {
 		String user = "root";
 		String password = "root";
 
+		milestone1(url, user, password);
+
+	}
+
+	public static void milestone1(String url, String user, String password) {
+
 		try (Connection con = DriverManager.getConnection(url, user, password)) {
 
 			System.out.println("Connessione effettuata!");
